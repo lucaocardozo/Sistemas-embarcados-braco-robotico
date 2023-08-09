@@ -1,11 +1,14 @@
 # Sistemas Embarcados: Braço robótico
 Aluno: Lucas Martins Cardozo.          RA: 1996770.
+
 Universidade Tecnológica Federal do Paraná
 
 
 ## Project Description
 In this project it was developed the control of a robotic arm via Wi-Fi, using a microcontroller, through a web interface.
+
 To realise this, the ArduinoIDE interface was used and the following languages were used: C, JavaScript, HTML and CSS.
+
 The biggest challenge encountered was to find a way to reduce abrupt movements and decrease the delay to control the robotic arm via Wi-Fi.
 
 
