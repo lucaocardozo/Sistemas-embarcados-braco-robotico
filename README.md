@@ -1,5 +1,6 @@
 # Sistemas Embarcados: Braço robótico
-#Aluno: Lucas Martins Cardozo.          RA: 1996770.
+Aluno: Lucas Martins Cardozo.          RA: 1996770.
+Universidade Tecnológica Federal do Paraná
 
 
 ## Project Description
