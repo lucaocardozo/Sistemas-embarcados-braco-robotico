@@ -2,13 +2,18 @@ const char MAIN_page[] PROGMEM = R"=====(
 <!DOCTYPE html>
 <html>
   <head>
+    // This meta tag tells the browser to scale the page to fit the width of the device.
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    // This meta tag specifies the character encoding for the page.
     <meta charset="UTF-8">
+    // This style tag defines the CSS for the page.
     <style>
       h1 {
+        //Font and spacing
         font-family: 'Arial', sans-serif;
         font-size: 24px;
         text-align: center;
+        //Background and shadow
         background: #f2f2f2;
         display: inline-block;
         padding: 10px;
@@ -116,7 +121,7 @@ const char MAIN_page[] PROGMEM = R"=====(
   <body>
 
 
-
+// This h1 tag defines the heading for the page.
 <h1>TCC2 - Lucas Martins Cardozo</h1>
 <br><br>
 <div class="container">
@@ -174,17 +179,24 @@ const char MAIN_page[] PROGMEM = R"=====(
 
 
 <script>
+  // This function sends the current values of the sliders to the server.
   function sendData(pos1, pos2, pos3, pos4) {
+    // Create a new XMLHttpRequest object.
     var xhttp = new XMLHttpRequest();
+    // Set up an event listener for when the request is complete.
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
+        // The request was successful, log the response.
         console.log(this.responseText);
       }
     };
+    // Set the request method and the URL.
     xhttp.open("GET", "setPOS?POS1=" + pos1 + "&POS2=" + pos2 + "&POS3=" + pos3 + "&POS4=" + pos4, true);
+    // Send the request.
     xhttp.send();
   } 
 
+  // These variables stores the initial values of the sliders.
   var s1 = 90;
   var s2 = 90;
   var s3 = 90;
@@ -195,7 +207,7 @@ const char MAIN_page[] PROGMEM = R"=====(
   var value3 = document.getElementById("value3");
   var value4 = document.getElementById("value4");
 
-  // Atualiza os valores iniciais
+  //Updates the initial values
   value1.textContent = s1 + "°";
   value2.textContent = s2 + "°";
   value3.textContent = s3 + "°";
@@ -206,28 +218,32 @@ const char MAIN_page[] PROGMEM = R"=====(
   var slider3 = document.getElementById("myRange2");
   var slider4 = document.getElementById("myRange3");
 
+  // This function updates the value of the rotation slider and sends the new value to the server.
   slider1.oninput = function() {
     s1 = slider1.value;
-    value1.textContent = s1 + "°"; // Atualiza o valor exibido
-    sendData(s1, s2, s3, s4); // Envia os valores para processamento
+    value1.textContent = s1 + "°"; //Updates the displayed value
+    sendData(s1, s2, s3, s4); //Sends the values for processing
   }
+  // This function updates the value of the rotation slider and sends the new value to the server.
   slider2.oninput = function() {
     s2 = slider2.value;
-    value2.textContent = s2 + "°"; // Atualiza o valor exibido
-    sendData(s1, s2, s3, s4); // Envia os valores para processamento
+    value2.textContent = s2 + "°"; //Updates the displayed value
+    sendData(s1, s2, s3, s4); //Sends the values for processing
   }
+  // This function updates the value of the rotation slider and sends the new value to the server.
   slider3.oninput = function() {
     s3 = slider3.value;
-    value3.textContent = s3 + "°"; // Atualiza o valor exibido
-    sendData(s1, s2, s3, s4); // Envia os valores para processamento
+    value3.textContent = s3 + "°"; //Updates the displayed value
+    sendData(s1, s2, s3, s4); //Sends the values for processing
   }
+  // This function updates the value of the rotation slider and sends the new value to the server.
   slider4.oninput = function() {
     s4 = slider4.value;
-    value4.textContent = s4 + "°"; // Atualiza o valor exibido
-    sendData(s1, s2, s3, s4); // Envia os valores para processamento
+    value4.textContent = s4 + "°"; //Updates the displayed value
+    sendData(s1, s2, s3, s4); //Sends the values for processing
   }
 
-  // Incremento e decremento ao clicar nas setas
+  // increment and decrement functions by button
   var increment1 = document.getElementById("increment1");
   var decrement1 = document.getElementById("decrement1");
   var increment3 = document.getElementById("increment3");
@@ -236,10 +252,14 @@ const char MAIN_page[] PROGMEM = R"=====(
   var decrement4 = document.getElementById("decrement4");
 
   increment1.onclick = function() {
+    // Increment the value of the slider.
     s1 = parseInt(s1) + 10;
+    // Make sure the value doesn't go over 180.
     if (s1 > 180) s1 = 180;
+    // Update the value displayed on the page.
     slider1.value = s1;
     value1.textContent = s1 + "°";
+    // Send the new value to the server.
     sendData(s1, s2, s3, s4);
   }
 
@@ -283,7 +303,7 @@ const char MAIN_page[] PROGMEM = R"=====(
     sendData(s1, s2, s3, s4);
   }
 
-  // Botões de abrir e fechar
+  // Open and close buttons
   var openButton = document.getElementById("openButton");
   var closeButton = document.getElementById("closeButton");
 
