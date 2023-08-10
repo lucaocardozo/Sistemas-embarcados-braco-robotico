@@ -5,6 +5,7 @@
 #include <string>
 #include "Web.h"
 
+//Defining the pins
 #define ServoPort1 D1
 #define ServoPort2 D2
 #define ServoPort3 D3
@@ -19,6 +20,7 @@ void handleRoot() {
   server.send(200, "text/html", MAIN_page);
 }
 
+//handle the position of the servos
 void handleServo(){
   String POS1 = server.arg("POS1");
   int pos1 = std::atoi(POS1.c_str());
@@ -40,6 +42,7 @@ void handleServo(){
   server.send(200, "text/plane","");
 }
 
+//Setting up the WiFi network 
 void setup() {
   const char* ssid = "TCC2";
   const char* password = "lucascardozo";
@@ -66,6 +69,7 @@ void setup() {
   Serial.println("HTTP server started");
 }
 
+//Loop to run the program
 void loop() {
  server.handleClient();
 }
